@@ -1,0 +1,105 @@
+.container {
+	position: relative;
+  	max-width: $maxWidthContainer + px;
+	margin: 0 auto;
+   padding: 0 10px;
+}
+@media (max-width: ($md2)) { //1200
+	.promo {
+		height: 600px;
+		padding-top: 130px;
+		&__wrapper {
+			align-items: center;
+		}
+	}
+	
+}
+@media (max-width: ($md3)) { //992
+	.container {
+		max-width: $md4;
+	}
+	.header__official {
+		display: none;
+	}
+	.promo {
+		height: 550px;
+		&__title h2 {
+			margin-bottom: 45px;
+		}
+		&__icons {
+			margin-bottom: 50px;
+		}
+	}
+	.consultation {
+		text-align: center;
+		&__wrapper {
+			align-items: center;
+		}
+		&__title {
+			max-width: 1000px;
+		}
+	}
+}
+@media (max-width: ($md4)) { //768
+	.container {
+		max-width: $md5;
+	}
+   .promo {
+		height: 450px;
+		&__icons {
+			display: none;
+		}
+	}
+	.advantages__item {
+		min-width: 100%;
+		margin-bottom: 20px;
+	}
+}
+@media (max-width: ($md5)) { //576
+	.container {
+		max-width: $md6;
+	}
+   .promo {
+		height: 400px;
+		&__button {
+			width: 250px;
+		}
+	}
+}
+@media (max-width: ($md6)) { //480
+	.container {
+		max-width: $md7;
+	}
+	.header {
+		&__wrapper {
+			justify-content: center;
+		}
+		&__contacts {
+			display: none;
+		}
+	}
+   .promo {
+		height: 400px;
+		padding-top: 110px;
+		&__title h2 {
+			margin-bottom: 25px;
+		}
+		&__button {
+			font-size: 13px;
+			width: 240px;
+		}
+	}
+	.consultation {
+		&__text {
+			display: none;
+		}
+		&__form {
+			width: 280px;
+		}
+	}
+}
+@media (max-width: ($md7)) { //320
+	.promo {
+		height: 400px;
+	}
+}
