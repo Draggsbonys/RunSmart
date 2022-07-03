@@ -561,19 +561,23 @@ let _slideToggle = (target, duration = 400) => {
 }
 
 //SWIPER///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const swiper = new Swiper('.swiper', {
-   // Optional parameters
-   direction: 'horizontal',
-   loop: true,
- 
-   // If we need pagination
-   pagination: {
-     el: '.swiper-pagination',
-   },
- 
-   // Navigation arrows
+new Swiper('.image-slider', {
    navigation: {
-     nextEl: '.swiper-button-next',
-     prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
    },
+   pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+   },
+   loop: true,
+
+   autoplay: {
+      delay: 3000,
+      stopOnLastSlide: true,
+      disableOnInteraction: false,
+   },
+
+   autoHeigth: true,
 });

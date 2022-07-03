@@ -39,6 +39,10 @@
 			max-width: 1000px;
 		}
 	}
+	.swiper-button-prev,
+	.swiper-button-next {
+		display: none;
+	}
 }
 @media (max-width: ($md4)) { //768
 	.container {
@@ -54,6 +58,9 @@
 		min-width: 100%;
 		margin-bottom: 20px;
 	}
+	.slider {
+		min-height: 570px;
+	}
 }
 @media (max-width: ($md5)) { //576
 	.container {
@@ -64,6 +71,11 @@
 		&__button {
 			width: 250px;
 		}
+	}
+	
+	.slider {
+		min-height: 520px;
+		padding: 50px 0;
 	}
 }
 @media (max-width: ($md6)) { //480
@@ -97,6 +109,10 @@
 			width: 280px;
 		}
 	}
+	.slider {
+		min-height: 370px;
+	}
+	
 }
 @media (max-width: ($md7)) { //320
 	.promo {
