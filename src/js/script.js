@@ -581,3 +581,16 @@ new Swiper('.image-slider', {
 
    autoHeigth: true,
 });
+
+
+//CARDS//////////////////////////////////////////////////////////////////////////////////
+
+
+ $(document).ready(function() {
+   $(".catalog-item__link").click(function(e) {
+      e.preventDefault();
+      $(".catalog-item__content").toggleClass('catalog-item__content-active');
+      $(".catalog-item__content").toggleClass('catalog-item__list-active');
+      
+    })
+});
