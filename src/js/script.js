@@ -1,10 +1,10 @@
 "use strict" //Подключаем строгий режим
 //Скрипт для центрирования фонового изображения
-$(document).ready(function() {
-   function ibg(){
-      $.each($('.ibg'), function(index, val) {
-         if($(this).find('img').length > 0){
-            $(this).css('background-image','url("'+$(this).find('img').attr('src')+'")');
+$(document).ready(function () {
+   function ibg() {
+      $.each($('.ibg'), function (index, val) {
+         if ($(this).find('img').length > 0) {
+            $(this).css('background-image', 'url("' + $(this).find('img').attr('src') + '")');
          }
       });
    }
@@ -167,7 +167,7 @@ document.querySelectorAll('.header__link').forEach(e => { //Находим вс�
             let headerItem = ''; //Объявляем переменную headerItem со значением пустой строки
             for (let i = 0; i < headerItems.length; i++) { //Запускаем цикл перебора массива .header__item
                headerItem += headerItems[i]; //Задаем переменной headerItem значение headerItems с индексом
-               if (  e.target == headerSubList //Если целью клика является переменная headerSubList (выпадающее подменю)
+               if (e.target == headerSubList //Если целью клика является переменная headerSubList (выпадающее подменю)
                   || e.target == headerArrow //Если целью клика является переменная headerArrow (стрелочка выпадающего подменю)
                   || e.target == document.querySelector(`[data-link=${headerLink}]`) //Если целью клика является пункт меню с атрибутом data-link
                   || e.target == menu //Если целью клика является переменная menu (главное меню)
@@ -188,8 +188,8 @@ document.querySelectorAll('.header__link').forEach(e => { //Находим вс�
          //Закрытие выпадающего подменю по нажатию на клавишу ESC/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          window.addEventListener('keydown', function (e) { //Функция закрытия подменю по нажатию клавиши esc
             if (e.keyCode == 27) { //Если нажатой клавишей является клавиша esc 
-               if (  headerArrow.classList.contains('active') || headerArrow.classList.contains('open') //Если у стрелочки есть класс .open и клас .active  
-                  ) {
+               if (headerArrow.classList.contains('active') || headerArrow.classList.contains('open') //Если у стрелочки есть класс .open и клас .active  
+               ) {
                   headerArrow.classList.remove('active'); //Удаляем класс .active у стрелочек
                   headerArrow.classList.remove('open'); //Удаляем класс .open у стрелочек
                   headerSubList.classList.remove('active'); //Удаляем класс .active у выпадающего подменю
@@ -426,7 +426,7 @@ if (spollersArray.length > 0) { //Проверяем есть ли на стра
                return true; // Возвращаем булевое значение true
             }
          });
-            
+
          //СОБЫТИЕ 
          matchMedia.addListener(function () { // Вешаем функцию на переменную matchMedia 
             initSpollers(spollersArray, matchMedia); // в функцию initSpollers собранный массив объектов spollersArray и константу matchMedia 
@@ -448,7 +448,7 @@ if (spollersArray.length > 0) { //Проверяем есть ли на стра
             initSpollerBody(spollersBlock, false); // Отправляем спойлер и параметр false в будущую функцию initSpollersBody 
             spollersBlock.removeEventListener("click", setSpollerAction); // Убираем со спойлера событие клик и вызываем будущую функцию которую напишем позднее
          }
-      });  
+      });
    }
 
    //РАБОТА С КОНТЕНТОМ 
@@ -461,10 +461,10 @@ if (spollersArray.length > 0) { //Проверяем есть ли на стра
                if (!spollerTitle.classList.contains('_active')) { // Если у заголовка отсутствует класс _active 
                   spollerTitle.nextElementSibling.hidden = true; // Тогда мы скрываем контентную часть 
                }
-            } else { 
+            } else {
                spollerTitle.setAttribute('tabindex', '-1'); // Иначе мы добавляем заголовку аттрибут tabindex со значением -1
                spollerTitle.nextElementSibling.hidden = false; // Показываем контенктные блоки если они были скрыты
-            } 
+            }
          });
       }
    }
@@ -505,7 +505,7 @@ let _slideUp = (target, duration = 400) => {
       target.style.overflow = 'hidden';
       target.style.height = 0;
       target.style.paddingTop = 0;
-      target.style.paddingBottom = 0; 
+      target.style.paddingBottom = 0;
       target.style.marginTop = 0;
       target.style.marginBottom = 0;
       window.setTimeout(() => {
@@ -532,10 +532,10 @@ let _slideDown = (target, duration = 400) => {
       target.style.overflow = 'hidden';
       target.style.height = 0;
       target.style.paddingTop = 0;
-      target.style.paddingBottom = 0; 
+      target.style.paddingBottom = 0;
       target.style.marginTop = 0;
       target.style.marginBottom = 0;
-      target.offsetHeight; 
+      target.offsetHeight;
       target.style.transitionProperty = "height, margin, padding";
       target.style.transitionDuration = duration + 'ms';
       target.style.height = height + 'px';
@@ -544,11 +544,11 @@ let _slideDown = (target, duration = 400) => {
       target.style.removeProperty('margin-top');
       target.style.removeProperty('margin-bottom');
       window.setTimeout(() => {
-      target.style.removeProperty('height');
-      target.style.removeProperty('overflow');
-      target.style.removeProperty('transition-duration');
-      target.style.removeProperty('transition-property');
-      target.classList.remove('_slide');
+         target.style.removeProperty('height');
+         target.style.removeProperty('overflow');
+         target.style.removeProperty('transition-duration');
+         target.style.removeProperty('transition-property');
+         target.classList.remove('_slide');
       }, duration);
    }
 }
@@ -585,43 +585,40 @@ new Swiper('.image-slider', {
 
 //CARDS//////////////////////////////////////////////////////////////////////////////////
 if (document.querySelectorAll('.catalog-item__link').length > 0) {
-   document.querySelectorAll('.catalog-item__link').forEach(e => { 
-      e.addEventListener('click', e => { 
-         const catalogLink = e.currentTarget.dataset.link;  
-         const catalogItem = document.querySelector(`[data-item=${catalogLink}]`); 
+   document.querySelectorAll('.catalog-item__link').forEach(e => {
+      e.addEventListener('click', e => {
+         const catalogLink = e.currentTarget.dataset.link;
+         const catalogItem = document.querySelector(`[data-item=${catalogLink}]`);
          if (!catalogItem.classList.contains('active')) {
             catalogItem.classList.add('active');
          } else {
             catalogItem.classList.remove('active');
          }
          e.preventDefault();
-         });
+      });
    });
-} 
-let tabs = document.querySelectorAll('.catalog__tab');
+}
 
-tabs.forEach((tabLink) => {
-   tabLink.addEventListener('click', e => {
-      let intervalId;
-      let tabLinkActive = e.currentTarget;
-      if (!tabLinkActive.classList.contains('open')) {
-         for (let i = 0; i < tabs.length; i++) {
-            tabs[i].classList.remove('active');
-            tabs[i].classList.remove('open');
-         }
-         tabLinkActive.classList.add('active');
-         intervalId = setTimeout(() => {
-            tabLinkActive.classList.add('open'); 
-         }, 0);
-      }
-      if (tabLinkActive.classList.contains('open')) {
-         clearTimeout(intervalId);
-         tabLinkActive.classList.remove('active');
-         intervalId = setTimeout(() => {
-            tabLinkActive.classList.remove('open'); 
-         }, 0);
-      }
-   });
-});
+function Tabs() {
+   let tabs = document.querySelectorAll('.catalog__tab');
+   let tabContent = document.querySelectorAll('.catalog__content');
+   if (tabs.length > 0) {
+      tabs.forEach((tabLink) => {
+         tabLink.addEventListener('click', e => {
+            const dataTab = e.currentTarget.dataset.tab;
+            const dataContent = document.querySelector(`[data-content=${dataTab}]`);
+            let tabLinkActive = e.currentTarget;
+            for (let i = 0; i < tabs.length; i++) {
+               tabs[i].classList.remove('active');
+               tabContent[i].classList.remove('active');
+            }
+            tabLinkActive.classList.add('active');
+            dataContent.classList.add('active');
+         });
+      });
+   }
+}
+Tabs();
+
 
 
