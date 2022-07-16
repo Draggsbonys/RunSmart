@@ -263,7 +263,7 @@
 
 //CATALOG//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////@at-root
 .catalog {
-   min-height: 1184px;
+   min-height: 400px;
    padding-bottom: 103px;
    text-align: center;
    &__title {
@@ -272,13 +272,15 @@
       margin-bottom: 55px;
       text-transform: uppercase;
    }
-   &__tabs {
+}
+
+.tabs {
+   &__nav {
       display: flex;
       justify-content: center;
       align-items: center;
-      text-transform: uppercase;
    }
-   &__tab {
+   &__nav-btn {
       height: 50px;
       width: 200px;
       border: 2px solid #D0D0D0;
@@ -289,30 +291,34 @@
       margin: 0 5px;
       margin-bottom: 60px;
       transition: 0.5s all;
+      text-transform: uppercase;
       &:hover {
          box-shadow: 3px 3px 20px $color-red;
          border: none;
       }
-      &.active {
+      &--active {
          background-color: $color-red;
          border: none;
          color: #FFFFFF;
       }
       cursor: pointer;
-      div {
+      span {
+         display: block;
          transform: skewX(22deg);
+      }
+   }
+
+   &__panel {
+      display: none;
+      &--active {
+         display: flex;
+         justify-content: start;
+         flex-wrap: wrap;
       }
    }
 }
 
-.catalog__content {
-   display: none;
-   &.active {
-      display: flex;
-      justify-content: start;
-      flex-wrap: wrap;
-   }
-}
+
 .catalog-item {
    display: flex;
    flex-direction: column;
