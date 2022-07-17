@@ -1,6 +1,6 @@
 "use strict" //Подключаем строгий режим
 
-//Скрипт для центрирования фонового изображения
+//BACKGROUND IMAGE
 $(document).ready(function () {
    function ibg() {
       $.each($('.ibg'), function (index, val) {
@@ -11,7 +11,8 @@ $(document).ready(function () {
    }
    ibg();
 });
-//ПЛАВНАЯ ПРОКРУТКА (SCROLL) СТРАНИЦЫ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//LAZZY SCROLLING PAGE////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Для подключения скролла в HTML документе необходимо добавить к кнопке (ссылке) запускающей скролл атрибут data-goto=".имя__класса", где "имя__класса" это класс элемента к которому необходимо сделать скролл
 
 const menuLinks = document.querySelectorAll('.header__link[data-goto]'); //Находим все ссылки .header__link в документе
@@ -43,7 +44,7 @@ if (menuLinks.length > 0) { //Проверяем наличие в докуме�
    }
 }
 
-//МЕНЮ БУРГЕР/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//MENU BURGER/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.querySelectorAll('.burger').forEach(e => { //Находим все элементы с классом .burger (кнопка бургер) на странице и запускаем стрелочную функцию в которой мы получаем в element наш бургер
    e.addEventListener('click', e => { //Вешаем событие клик на элемент в который мы получили наш бургер
       const body = document.querySelector('body'); //Объявляем переменную body и помещаем в неё элемент body
@@ -112,7 +113,7 @@ document.querySelectorAll('.burger').forEach(e => { //Находим все эл
    })
 });
 
-//ВЫПАДАЮЩЕЕ МЕНЮ (DROPDOWNS)/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//DROPDOWNS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.querySelectorAll('.header__link').forEach(e => { //Находим все элементы с классом .header__link (пункт меню) на странице и запускаем стрелочную функцию в которой мы получаем в element наш пункт меню
    e.addEventListener('click', e => { //Вешаем событие клик на элемент в который мы получили наш пункт меню
       const body = document.querySelector('body'); //Объявляем переменную body и помещаем в неё элемент body
@@ -202,7 +203,7 @@ document.querySelectorAll('.header__link').forEach(e => { //Находим вс�
    });
 });
 
-//МОДАЛЬНЫЕ ОКНА////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//MODALS WINDOW////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Структура модального окна в HTML документе - <div class="modal"> => <div class="modal__container">
 //Для того чтобы задать уникальное имя модального окна для связи с кнопкой, добавьте к контейнеру модального окна атрибут data-target="имя"
@@ -362,7 +363,7 @@ const modal = new Modal({
    }
 });
 
-//SPOLLERS
+//SPOLLERS////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //АТТРИБУТЫ В HTML:
 //ДЛЯ ОБОЛОЧЕК СПОЙЛЕРОВ - data-spollers 
@@ -435,7 +436,6 @@ if (spollersArray.length > 0) { //Проверяем есть ли на стра
          initSpollers(spollersArray, matchMedia); // Запускаем функцию initSpollers для того чтобы она отработала сразу при загрузке страницы
       });
    }
-
    //ИНИЦИАЛИЗАЦИЯ 
    function initSpollers(spollersArray, matchMedia = false) { // Создаем функцию initSpollers в которую получаем два параметра в виде массива spollersArray и константы matchMedia, но если мы не передаем константу matchMedia, то её значение будет равно false  
       spollersArray.forEach(spollersBlock => { // Перебираем массив spollersArray с помощью метода .forEach и присваиваем и присваеваем каждый элемент данного массива в переменную spollerBlock
@@ -494,7 +494,6 @@ if (spollersArray.length > 0) { //Проверяем есть ли на стра
    }
 }
 
-//=======================================================================================================================================================================
 //SlideToggle 
 let _slideUp = (target, duration = 400) => {
    if (!target.classList.contains('_slide')) {
@@ -583,68 +582,79 @@ new Swiper('.image-slider', {
    autoHeigth: true,
 });
 
-
 //CARDS//////////////////////////////////////////////////////////////////////////////////
-function catalogCards() {
-   if (document.querySelectorAll('.catalog-item__link-item').length > 0) {
-      const catalogLinkItem = document.querySelectorAll('.catalog-item__link-item');
-      const catalogLinkList = document.querySelectorAll('.catalog-item__link-list');
-      const catalogContent = document.querySelectorAll('.catalog-item__content');
-      const catalogList = document.querySelectorAll('.catalog-item__list');
-      catalogLinkItem.forEach((el, i) => {
-         el.setAttribute('data-link', `id${i + 1}`);
+function Cards() {
+   if (document.querySelectorAll('.cards-item__link-item').length > 0) {
+      const cardsLinkItem = document.querySelectorAll('.cards-item__link-item');
+      const cardsLinkList = document.querySelectorAll('.cards-item__link-list');
+      const cardsContent = document.querySelectorAll('.cards-item__content');
+      const cardsList = document.querySelectorAll('.cards-item__list');
+      cardsContent.forEach((el, i) => {
+         el.setAttribute('data-rard', `card${i + 1}`);
+      });
+      cardsList.forEach((el, i) => {
+         el.setAttribute('data-list', `card${i + 1}`);
+      });
+      cardsLinkItem.forEach((el, i) => {
+         el.setAttribute('data-link', `card${i + 1}`);
          el.addEventListener('click', e => {
-            const catalogLink = e.currentTarget.dataset.link;
-            const catalogContent = document.querySelector(`[data-content=${catalogLink}]`);
-            if (!catalogContent.classList.contains('active')) {
-               catalogContent.classList.add('active');
+            const cardsLink = e.currentTarget.dataset.link;
+            const cardsContent = document.querySelector(`[data-rard=${cardsLink}]`);
+            if (!cardsContent.classList.contains('active')) {
+               cardsContent.classList.add('active');
             } else {
-               catalogContent.classList.remove('active');
+               cardsContent.classList.remove('active');
             }
             e.preventDefault();
          });
       });
-      catalogLinkList.forEach((el, i) => {
-         el.setAttribute('data-link', `id${i + 1}`);
+      cardsLinkList.forEach((el, i) => {
+         el.setAttribute('data-link', `card${i + 1}`);
          el.addEventListener('click', e => {
-            const catalogList = e.currentTarget.dataset.link;
-            const catalogContent = document.querySelector(`[data-content=${catalogList}]`);
-            if (!catalogContent.classList.contains('active')) {
+            const cardsList = e.currentTarget.dataset.link;
+            const cardsContent = document.querySelector(`[data-rard=${cardsList}]`);
+            if (!cardsContent.classList.contains('active')) {
 
-               catalogContent.classList.add('active');
+               cardsContent.classList.add('active');
             } else {
-               catalogContent.classList.remove('active');
+               cardsContent.classList.remove('active');
             }
             e.preventDefault();
          });
-      });
-      catalogContent.forEach((el, i) => {
-         el.setAttribute('data-content', `id${i + 1}`);
-      });
-      catalogList.forEach((el, i) => {
-         el.setAttribute('data-list', `id${i + 1}`);
       });
    }
 }
-catalogCards();
+Cards();
 
-
-
-
-
-const tabs1 = new GraphTabs('tab', {
-   isChanged: (tabs) => {
-      console.log(tabs);
+//SIMPLE TABS////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Tabs() {
+   const tabs = document.querySelectorAll('.tabs__nav-btn');
+   if (tabs.length > 0) {
+      const tabsContents = document.querySelectorAll('.tabs__panel');
+      tabs.forEach((el, i) => {
+         el.setAttribute('data-tab', `tab${i + 1}`);
+      });
+      tabsContents.forEach((el, i) => {
+         el.setAttribute('data-content', `tab${i + 1}`);
+      })
+      tabs.forEach((el) => {
+         el.addEventListener('click', e => {
+            const dataTab = e.currentTarget.dataset.tab;
+            const tabsContent = document.querySelector(`[data-content=${dataTab}]`);
+            tabs.forEach((el ,i) => {
+               tabs[i].classList.remove('active');
+               tabsContents[i].classList.remove('active');
+            });
+            e.currentTarget.classList.add('active');
+            tabsContent.classList.add('active');
+         });
+      });
    }
-});
+}
+Tabs();
 
-/*const tabs3 = new GraphTabs('tab3', {
-   isChanged: (tabs) => {
-     console.log(tabs);
-   }
-});
- 
-tabs1.switchTabs(document.querySelector('#tab3'));
-tabs3.switchTabs(document.querySelector('#tab32'));*/
-console.log('123')
+
+
+
+
 
