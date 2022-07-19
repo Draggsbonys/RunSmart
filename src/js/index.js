@@ -388,12 +388,10 @@ if (spollersArray.length > 0) { //Проверяем есть ли на стра
    if (spollersRegular.length > 0) { //Проверяем есть ли на странице хотя бы один элемент spollersRegular
       initSpollers(spollersRegular); //Передаем в будущую функцию initSpollers массив spollersRegular 
    }
-
    //ПОЛУЧАЕМ СПОЙЛЕРЫ С МЕДИА ЗАПРОСАМИ (АДАПТИВНЫЕ)
    const spollersMedia = Array.from(spollersArray).filter(function (item, index, self) { //С помощью Array.from мы переводим коллекцию spollersArray в массив, затем получаем в переменную spollersMedia массив spollersArray и фильтурем его для дальнешего разделения на обычные спойлеры и медиа-адаптивные спойлеры
       return item.dataset.spollers.split(",")[0]; //Возвращаем с помощью функции все элементы у которых есть параметр дата-атрибута
    });
-
    //ИНИЦИАЛИЗАЦИЯ СПОЙЛЕРОВ С МЕДИА ЗАПРОСАМИ (АДАПТИВНЫХ) 
    if (spollersMedia.length > 0) { //Проверяем есть ли на странице хотя бы один элемент spollersMedia 
       const breakpointsArray = []; //Создаем пустой массив breakpointsArray для дальнейшего наполнения
@@ -406,7 +404,6 @@ if (spollersArray.length > 0) { //Проверяем есть ли на стра
          breakpoint.item = item; //В объекте breakpoint создаем ключ item со значением в качестве самого объекта
          breakpointsArray.push(breakpoint); //Добавляем объект (ассоциативный массив) breakpoints в массив breakpointsArray
       });
-
       //ПОЛУЧАЕМ УНИКАЛЬНЫЕ БРЕЙКПОИНТЫ 
       let mediaQueries = breakpointsArray.map(function (item) { // Объявляем переменную mediaQueries в которую присваиваем значение массива breakpointsArray и с помощью метода .map перебираем последний массив 
          return '(' + item.type + "-width: " + item.value + "px)," + item.value + ',' + item.type; //Возвращаем в перебранный массив значение строки по типу (max-width: 600px), 600px, max - в качестве примера
@@ -572,16 +569,13 @@ new Swiper('.image-slider', {
       dynamicBullets: true,
    },
    loop: true,
-
    autoplay: {
       delay: 3000,
       stopOnLastSlide: true,
       disableOnInteraction: false,
    },
-
    autoHeigth: true,
 });
-
 //TOGGLE CARDS//////////////////////////////////////////////////////////////////////////////////
 function Cards(item) {
    const linkContent = document.querySelectorAll('.cards-item__content');
@@ -594,24 +588,10 @@ function Cards(item) {
             e.preventDefault();
          });
       });
-   }
-}
+   };
+};
 Cards(document.querySelectorAll('.cards-item__link-item'));
 Cards(document.querySelectorAll('.cards-item__link-list'));
-
-//TOGGLE CARDS WITH JQUERY
-/*function toggleCard(item) {
-   $(item).each(function(i) {
-      $(this).on('click', function(e) {
-         $('.cards-item__content').eq(i).toggleClass('active');
-         $('.cards-item__list').eq(i).toggleClass('active');
-         e.preventDefault();
-      });
-   });
-};
-toggleCard('.cards-item__link-item');
-toggleCard('.cards-item__link-list');*/
-
 //SIMPLE TABS////////////////////////////////////////////////////////////////////////////////////////////////////////
 function simpleTabs() {
    const tabs = document.querySelectorAll('.tabs__nav-btn');
@@ -628,36 +608,10 @@ function simpleTabs() {
             e.preventDefault();
          });
       });
-   }
-}
+   };
+};
 simpleTabs();
 
-//SIMPLE TABS WITH DATA-ATTRIBUTE
-/*function Tabs() {
-   const tabs = document.querySelectorAll('.tabs__nav-btn');
-   if (tabs.length > 0) {
-      const tabsContents = document.querySelectorAll('.tabs__panel');
-      tabs.forEach((el, i) => {
-         el.setAttribute('data-tab', `tab${i + 1}`);
-      });
-      tabsContents.forEach((el, i) => {
-         el.setAttribute('data-content', `tab${i + 1}`);
-      })
-      tabs.forEach((el) => {
-         el.addEventListener('click', e => {
-            const dataTab = e.currentTarget.dataset.tab;
-            const tabsContent = document.querySelector(`[data-content=${dataTab}]`);
-            tabs.forEach((el ,i) => {
-               tabs[i].classList.remove('active');
-               tabsContents[i].classList.remove('active');
-            });
-            e.currentTarget.classList.add('active');
-            tabsContent.classList.add('active');
-         });
-      });
-   }
-}
-Tabs();*/
 
 
 
